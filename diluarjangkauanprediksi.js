@@ -1,5 +1,6 @@
-
-(function () {
+(() => {
+    // Gunakan 'use strict' untuk keamanan scope variabel di CDN
+    'use strict';
 
     const WIDGET_ID = 'kdh-match-widget';
     let injected = false;
