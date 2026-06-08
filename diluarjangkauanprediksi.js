@@ -1,3 +1,4 @@
+
 (function () {
 
     const WIDGET_ID = 'kdh-match-widget';
@@ -10,14 +11,13 @@
             padding:0 !important;
             line-height:0;
             font-size:0;
-            transform: translateY(-35px);
-            overflow:hidden;
+            transform: translateY(0px);
         ">
             <iframe 
-                src="https://match-recommendation-kudahoki88.abacusai.app/"
+                src="https://match-recommendation-kudahoki88.abacusai.app"
                 style="
                     width:100%;
-                    height:240px;
+                    height:230px;
                     border:none;
                     display:block;
                     margin:0;
@@ -38,13 +38,9 @@
         const target = document.querySelector('.c-dLTxpX');
         if (!target) return false;
 
-        // HILANGIN SPACING CONTAINER
+        // HAPUS SPACING CONTAINER
         target.style.margin = "0";
         target.style.padding = "0";
-
-        // KUNCI GAP SEKITAR
-        target.style.lineHeight = "0";
-        target.style.fontSize = "0";
 
         const prev = target.previousElementSibling;
         const next = target.nextElementSibling;
