@@ -1,5 +1,4 @@
 (() => {
-    // Gunakan 'use strict' untuk keamanan scope variabel di CDN
     'use strict';
 
     const WIDGET_ID = 'kdh-match-widget';
@@ -8,13 +7,13 @@
     const IFRAME_HTML = `
         <div id="${WIDGET_ID}" style="
             width:100%;
-            margin:0 !important;
-            padding:0 !important;
+            margin:0 0 -0.25rem 0 !important;
+            padding:0.75rem 0 0 0 !important;
             line-height:0;
             font-size:0;
-            transform: translateY(0px);
+            transform:translateY(0);
         ">
-            <iframe 
+            <iframe
                 src="https://match-recommendation-kudahoki88.abacusai.app"
                 style="
                     width:100%;
@@ -34,20 +33,33 @@
 
     function tryInsert() {
 
-        if (injected || document.getElementById(WIDGET_ID)) return true;
+        if (injected || document.getElementById(WIDGET_ID)) {
+            return true;
+        }
 
         const target = document.querySelector('.c-dLTxpX');
         if (!target) return false;
 
-        // HAPUS SPACING CONTAINER
+        // Spacing target
         target.style.margin = "0";
-        target.style.padding = "0";
+        target.style.paddingTop = ".75rem";
+        target.style.paddingRight = "0";
+        target.style.paddingBottom = "0";
+        target.style.paddingLeft = "0";
+        target.style.marginBottom = "-0.25rem";
 
         const prev = target.previousElementSibling;
         const next = target.nextElementSibling;
 
-        if (prev) prev.style.marginBottom = "0";
-        if (next) next.style.marginTop = "0";
+        if (prev) {
+            prev.style.marginBottom = "0";
+            prev.style.paddingBottom = "0";
+        }
+
+        if (next) {
+            next.style.marginTop = "0";
+            next.style.paddingTop = "0";
+        }
 
         target.insertAdjacentHTML('beforebegin', IFRAME_HTML);
 
@@ -58,7 +70,9 @@
 
     function start() {
         const timer = setInterval(() => {
-            if (tryInsert()) clearInterval(timer);
+            if (tryInsert()) {
+                clearInterval(timer);
+            }
         }, 300);
     }
 
